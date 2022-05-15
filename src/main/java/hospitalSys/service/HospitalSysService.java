@@ -50,35 +50,35 @@ public class HospitalSysService {
 		return list;
 	}
 
-	@Getter
-	@Setter
-	public static class PageDatas<T> {
-
-		// 总条数
-		private int totalElements;
-		//
-		private int totalpages;
-		// 当前页面
-		private int currentPage;
-		// 当前页数
-		private int currentSize;
-
-		private List<T> datas;
-
-	}
-
-	public PageDatas<HomePageBean> selectAll(int page, int size) {
-
-		// int totalElements = ****Mapper.count()
-		// int totalPages = Math.ceil(totalElements / size);
-		// List<?> **Mapper.find....
-
-		PageDatas<HomePageBean> xxx = new PageDatas<>();
-		// xxx.setData
-
-		return xxx;
-
-	}
+//	@Getter
+//	@Setter
+//	public static class PageDatas<T> {
+//
+//		// 总条数
+//		private int totalElements;
+//		//
+//		private int totalpages;
+//		// 当前页面
+//		private int currentPage;
+//		// 当前页数
+//		private int currentSize;
+//
+//		private List<T> datas;
+//
+//	}
+//
+//	public PageDatas<HomePageBean> selectAll(int page, int size) {
+//
+//		// int totalElements = ****Mapper.count()
+//		// int totalPages = Math.ceil(totalElements / size);
+//		// List<?> **Mapper.find....
+//
+//		PageDatas<HomePageBean> xxx = new PageDatas<>();
+//		// xxx.setData
+//
+//		return xxx;
+//
+//	}
 
 	public List<HomePageBean> selectIdSe(int kanjaId) {
 
@@ -90,27 +90,12 @@ public class HospitalSysService {
 			} else {
 				x.setFlag("確認済み");
 			}
-			System.out.println("OOOOOOOOOKKKKK");
+
 		}
 
 		return list;
 	}
 
-	public void saveKanja(KanjaInfoBean kanjaInfoBean) {
-
-		Timestamp time = new Timestamp(System.currentTimeMillis());
-		kanjaInfoBean.setCreateTime(time);
-		hospitalSysMapper.saveKanja(kanjaInfoBean);
-
-	}
-
-	public void Tss(TBean tb) {
-		hospitalSysMapper.TS(tb);
-	}
-
-	public List<TBean> TTT() {
-		return hospitalSysMapper.TAll();
-	}
 
 	public KanjaInfoBean selectKanjaInfoByKanjaId(int kanjaId) {
 

@@ -165,60 +165,7 @@ public class HospitalSysController {
 
 	}
 
-	@PostMapping("/saveKanJa")
-	public String saveKanja(Model model) {
-		List<HomePageBean> demo = hospitalSysService.selectHomePage();
-		model.addAttribute("demo", demo);
 
-		return "homePage";
-
-	}
-
-	@GetMapping("/addTest")
-	public String add(Model model) {
-
-//model.addAttribute("kanjaInfoBean", new KanjaInfoBean());
-		List<TBean> Ti = hospitalSysService.TTT();
-		model.addAttribute("tBean", new TBean());
-		model.addAttribute("ti", Ti);
-
-		return "addTest";
-	}
-
-//@RequestMapping("login")
-//public String save(@ModelAttribute KanjaInfoBean ki ) {
-//
-//System.out.println("+++++++"+ki.getName());
-////hospitalSysService.saveKanja(ki);
-//
-//	return "addTest";
-//}
-
-	@RequestMapping("login")
-	public String tB(@ModelAttribute TBean tb) {
-
-		String url = null;
-		System.out.println("+++++++++++++++" + tb.toString());
-		if (tb.getKana().equals("sss")) {
-
-			hospitalSysService.Tss(tb);
-			url = "redirect:/addTest";
-		} else {
-			tb.setName("newName");
-			hospitalSysService.Tss(tb);
-			url = "homePage";
-		}
-
-		return url;
-	}
-
-//	@RequestMapping("/addInfo")
-//	public String addInfo(@ModelAttribute KanjaInfoBean kanjaInfo) {
-//		hospitalSysService.saveKanja(kanjaInfo);
-//		System.out.println(">>>>>>>>>>>>>>>>" + kanjaInfo.toString());
-//
-//		return "redirect:/addKanjaInfo";
-//	}
 
 	@PostMapping("testString")
 	public String testString(Model model, @RequestParam("tete") String tete) {
