@@ -39,8 +39,6 @@ public class HospitalSysService {
 
 		}
 
-		// System.out.println("==========+++++++>>>>"+list.get(1));
-
 		return list;
 	}
 
@@ -49,36 +47,6 @@ public class HospitalSysService {
 
 		return list;
 	}
-
-//	@Getter
-//	@Setter
-//	public static class PageDatas<T> {
-//
-//		// 总条数
-//		private int totalElements;
-//		//
-//		private int totalpages;
-//		// 当前页面
-//		private int currentPage;
-//		// 当前页数
-//		private int currentSize;
-//
-//		private List<T> datas;
-//
-//	}
-//
-//	public PageDatas<HomePageBean> selectAll(int page, int size) {
-//
-//		// int totalElements = ****Mapper.count()
-//		// int totalPages = Math.ceil(totalElements / size);
-//		// List<?> **Mapper.find....
-//
-//		PageDatas<HomePageBean> xxx = new PageDatas<>();
-//		// xxx.setData
-//
-//		return xxx;
-//
-//	}
 
 	public List<HomePageBean> selectIdSe(int kanjaId) {
 
@@ -96,7 +64,6 @@ public class HospitalSysService {
 		return list;
 	}
 
-
 	public KanjaInfoBean selectKanjaInfoByKanjaId(int kanjaId) {
 
 		return hospitalSysMapper.selectKanjaInfoByKanjaId(kanjaId);
@@ -112,14 +79,14 @@ public class HospitalSysService {
 
 	}
 
-//更改状态的方法
+	// 更改状态的方法
 	public void statusConfirmationOfHomePage(int documentId) {
 
 		hospitalSysMapper.statusConfirmation(documentId);
 
 	}
 
-//删除文书的方法
+	// 删除文书的方法
 	public void deleteDocumentIdById(int documentId) {
 
 		hospitalSysMapper.deleteDocument(documentId);

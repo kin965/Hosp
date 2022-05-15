@@ -48,7 +48,7 @@
 		createTime desc
 
 	</select>
-<!--  //根据id查询用户信息（病例用） -->
+	<!-- //根据id查询用户信息（病例用） -->
 	<select id="selectById" parameterType="int"
 		resultType="hospitalSys.bean.DocumentOrderBean">
 		select
@@ -240,7 +240,7 @@
 
 
 	</select>
-	<!--  根据id查询id信息（主页用）-->
+	<!-- 根据id查询id信息（主页用） -->
 	<select id="selectId" parameterType="int"
 		resultType="hospitalSys.bean.HomePageBean">
 		select
@@ -301,7 +301,7 @@
 
 
 
-<!-- 保存新用户信息 -->
+	<!-- 保存新用户信息 -->
 	<select id="selectKanjaInfoByKanjaId" parameterType="int"
 		resultType="hospitalSys.bean.KanjaInfoBean">
 		select Kanja_info.kanja_id as kanjaId
@@ -318,7 +318,7 @@
 
 		from Kanja_info where kanja_id = #{kanjaId}
 	</select>
-<!--  保存新介绍文书信息-->
+	<!-- 保存新介绍文书信息 -->
 	<insert id="saveNewKanjaInfo"
 		parameterType="hospitalSys.bean.KanjaInfoBean">
 		insert into kanja_info(
@@ -332,7 +332,8 @@
 		, address
 		, home_tel
 		, work_tel
-		, create_time
+		,
+		create_time
 
 		)values(
 		#{kanjaId},
@@ -350,11 +351,12 @@
 		)
 
 	</insert>
-	<!--  更改病例状态-->
+	<!-- 更改病例状态 -->
 	<update id="statusConfirmation" parameterType="int">
-		update document_info set flag ='2' where document_id= #{documentId};
+		update
+		document_info set flag ='2' where document_id= #{documentId};
 	</update>
-<!--  删除病例-->
+	<!-- 删除病例 -->
 	<delete id="deleteDocument" parameterType="int">
 		delete from
 		document_info where document_id=#{documentId}
@@ -383,14 +385,16 @@
 		, former_hospital_info
 		, flag
 		, create_time
-		, user_id
+		,
+		user_id
 		, hospital_id
 		)
 		values (
 		#{documentId}
 		, #{kanjaId}
 		, #{document}
-		, #{referralHospitalInfo}
+		,
+		#{referralHospitalInfo}
 		, null
 		, '1'
 		, #{createTime}
@@ -399,23 +403,28 @@
 		, '1'
 		);
 
-		insert into illness_info (
+		insert
+		into illness_info (
 		illness_id
 		, kanja_id
 		, complaints
 		, purpose
-		, medical_history
+		,
+		medical_history
 		, family_history
 		, diagnosis
 		, treatment_course
-		, prescription
+		,
+		prescription
 		, view
 		, habit
 		, announcements
 		, create_time
-		, prescription_starts_time
+		,
+		prescription_starts_time
 		, prescription_end_time
-		, physical_examination_star_time
+		,
+		physical_examination_star_time
 		, physical_examination_end_time
 		)values(
 		#{illnessId}
@@ -427,7 +436,8 @@
 		,#{diagnosis}
 		,#{treatmentCourse}
 		,#{prescription}
-		,#{ iiView}
+		,#{
+		iiView}
 		,#{habit}
 		,#{announcements}
 		,#{createTime}
@@ -449,7 +459,8 @@
 		into illness_info(
 		illness_id
 		, kanja_id
-		, inquiry_time
+		,
+		inquiry_time
 		, subjective
 		, objective
 		, assessment
@@ -467,7 +478,8 @@
 		,#{createTime}
 		);
 		insert
-		into document_info(
+		into
+		document_info(
 		document_id
 		, kanja_id
 		, document
@@ -482,7 +494,8 @@
 		#{documentId}
 		, #{kanjaId}
 		, #{document}
-		, #{referralHospitalInfo}
+		,
+		#{referralHospitalInfo}
 		, null
 		, '1'
 		, #{createTime}
@@ -502,12 +515,14 @@
 		into illness_info(
 		illness_id
 		, kanja_id
-		, inquiry_time
+		,
+		inquiry_time
 		, complaints
 		, purpose
 		, medical_history
 		, family_history
-		, diagnosis
+		,
+		diagnosis
 		, treatment_course
 		, prescription
 		, view
@@ -539,19 +554,22 @@
 		, document
 		, referral_hospital_info
 		, former_hospital_info
-		, flag
+		,
+		flag
 		, create_time
 		, user_id
 		, hospital_id
 		)
 		values (
 		#{documentId}
-		, #{kanjaId}
+		,
+		#{kanjaId}
 		, #{document}
 		, #{referralHospitalInfo}
 		, null
 		, '1'
-		, #{createTime}
+		,
+		#{createTime}
 		, '1'
 		, '1'
 		);
@@ -566,77 +584,105 @@
 		select
 		sub_sa.kanja_id as kanjaId
 		, sub_sa.name as name
-		, sub_sa.kana as kana
+		,
+		sub_sa.kana as kana
 		, sub_sa.birthday as birthday
-		, sub_sa.gender as gender
+		, sub_sa.gender as
+		gender
 		, sub_sa.postal_code as postalCode
 		, sub_sa.address as address
-		, sub_sa.home_tel as homeTel
+		,
+		sub_sa.home_tel as homeTel
 		, sub_sa.work_tel as workTel
-		, sub_sa.illness_id as illnessId
+		,
+		sub_sa.illness_id as illnessId
 		, sub_sa.complaints as complaints
-		, sub_sa.purpose as purpose
+		,
+		sub_sa.purpose as purpose
 		, sub_sa.medical_history as medicalHistory
-		, sub_sa.family_history as familyHistory
+		,
+		sub_sa.family_history as familyHistory
 		, sub_sa.diagnosis as diagnosis
 		, sub_sa.treatment_course as treatmentCourse
-		, sub_sa.prescription as prescription
+		, sub_sa.prescription as
+		prescription
 		, sub_sa.ii_view as iiView
 		, sub_sa.habit as habit
-		, sub_sa.announcements as announcements
-		, sub_sa.ii_create_time as iiCreateTime
+		,
+		sub_sa.announcements as announcements
+		, sub_sa.ii_create_time as
+		iiCreateTime
 		, sub_sa.document_id as documentId
-		, sub_sa.document as document
+		, sub_sa.document as
+		document
 		, sub_sa.referral_hospital_info as referralHospitalInfo
-		, sub_sa.former_hospital_info as formerHospitalInfo
+		,
+		sub_sa.former_hospital_info as formerHospitalInfo
 		, sub_sa.flag as flag
 		, sub_sa.di_create_time as diCreateTime
-		, sub_sa.prescription_starts_time as prescriptionStartsTime
-		, sub_sa.prescription_end_time as prescriptionEndTime
-		, sub_sa.physical_examination_star_time as physicalExaminationStarTime
-		, sub_sa.physical_examination_end_time as physicalExaminationEndTime
-		, sub_sa.subjective
+		,
+		sub_sa.prescription_starts_time as prescriptionStartsTime
+		,
+		sub_sa.prescription_end_time as prescriptionEndTime
+		,
+		sub_sa.physical_examination_star_time as physicalExaminationStarTime
+		,
+		sub_sa.physical_examination_end_time as physicalExaminationEndTime
+		,
+		sub_sa.subjective
 		, sub_sa.objective
 		, sub_sa.assessment
 		, sub_sa.plan
-		, sub_sa.inquiry_time as inquiryTime
+		,
+		sub_sa.inquiry_time as inquiryTime
 		from
 		(
 		select
 		sub_zi.kanja_id
-		, sub_zi.name
+		,
+		sub_zi.name
 		, sub_zi.kana
 		, sub_zi.birthday
 		, sub_zi.gender
-		, sub_zi.postal_code
+		,
+		sub_zi.postal_code
 		, sub_zi.address
 		, sub_zi.home_tel
 		, sub_zi.work_tel
-		, sub_zi.illness_id
+		,
+		sub_zi.illness_id
 		, sub_zi.complaints
 		, sub_zi.purpose
-		, sub_zi.medical_history
+		,
+		sub_zi.medical_history
 		, sub_zi.family_history
 		, sub_zi.diagnosis
-		, sub_zi.treatment_course
+		,
+		sub_zi.treatment_course
 		, sub_zi.prescription
 		, sub_zi.ii_view
-		, sub_zi.habit
+		,
+		sub_zi.habit
 		, sub_zi.announcements
 		, sub_zi.ii_create_time
-		, sub_zi.prescription_starts_time
+		,
+		sub_zi.prescription_starts_time
 		, sub_zi.prescription_end_time
-		, sub_zi.physical_examination_star_time
-		, sub_zi.physical_examination_end_time
+		,
+		sub_zi.physical_examination_star_time
+		,
+		sub_zi.physical_examination_end_time
 		, sub_zi.subjective
-		, sub_zi.objective
+		,
+		sub_zi.objective
 		, sub_zi.assessment
 		, sub_zi.plan
 		, sub_zi.inquiry_time
 		, sub_zd.document_id
 		, sub_zd.document
 		, sub_zd.referral_hospital_info
-		, sub_zd.former_hospital_info
+		,
+		sub_zd.former_hospital_info
 		, sub_zd.flag
 		, sub_zd.di_create_time
 		from
@@ -647,7 +693,8 @@
 		, ki.kana
 		, ki.birthday
 		, ki.gender
-		, ki.postal_code
+		,
+		ki.postal_code
 		, ki.address
 		, ki.home_tel
 		, ki.work_tel
@@ -655,44 +702,56 @@
 		, sub_i.complaints
 		, sub_i.purpose
 		, sub_i.medical_history
-		, sub_i.family_history
+		,
+		sub_i.family_history
 		, sub_i.diagnosis
 		, sub_i.treatment_course
-		, sub_i.prescription
+		,
+		sub_i.prescription
 		, sub_i.ii_view
 		, sub_i.habit
 		, sub_i.announcements
-		, sub_i.ii_create_time
+		,
+		sub_i.ii_create_time
 		, sub_i.prescription_starts_time
-		, sub_i.prescription_end_time
+		,
+		sub_i.prescription_end_time
 		, sub_i.physical_examination_star_time
-		, sub_i.physical_examination_end_time
+		,
+		sub_i.physical_examination_end_time
 		, sub_i.subjective
 		, sub_i.objective
 		, sub_i.assessment
 		, sub_i.plan
 		, sub_i.inquiry_time
 		from
-		kanja_info as ki join (
+		kanja_info as ki
+		join (
 		select
 		ii.illness_id
 		, ii.kanja_id
 		, ii.complaints
 		, ii.purpose
-		, ii.medical_history
+		,
+		ii.medical_history
 		, ii.family_history
 		, ii.diagnosis
-		, ii.treatment_course
+		,
+		ii.treatment_course
 		, ii.prescription
 		, ii.view as ii_view
 		, ii.habit
-		, ii.announcements
+		,
+		ii.announcements
 		, ii.create_time as ii_create_time
-		, ii.prescription_starts_time
+		,
+		ii.prescription_starts_time
 		, ii.prescription_end_time
-		, ii.physical_examination_star_time
+		,
+		ii.physical_examination_star_time
 		, ii.physical_examination_end_time
-		, ii.subjective
+		,
+		ii.subjective
 		, ii.objective
 		, ii.assessment
 		, ii.plan
@@ -701,32 +760,39 @@
 		illness_info as ii join (
 		select
 		kanja_id
-		, max(create_time) as max_time
+		, max(create_time) as
+		max_time
 		from
 		illness_info
 		group by
 		kanja_id
 		) as sub_q
-		on sub_q.max_time = ii.create_time
+		on sub_q.max_time =
+		ii.create_time
 		) as sub_i
 		on sub_i.kanja_id = ki.kanja_id
-		) as sub_zi join (
+		) as sub_zi
+		join (
 		select
 		ki.kanja_id
 		, sub_k.document_id
 		, sub_k.document
-		, sub_k.referral_hospital_info
+		,
+		sub_k.referral_hospital_info
 		, sub_k.former_hospital_info
 		, sub_k.flag
-		, sub_k.di_create_time
+		,
+		sub_k.di_create_time
 		from
 		kanja_info as ki join (
 		select
 		di.document_id
-		, di.document
+		,
+		di.document
 		, di.referral_hospital_info
 		, di.former_hospital_info
-		, di.flag
+		,
+		di.flag
 		, di.create_time as di_create_time
 		, di.kanja_id
 		from
@@ -739,14 +805,17 @@
 		group by
 		kanja_id
 		) as sub_w
-		on sub_w.max_time = di.create_time
+		on sub_w.max_time =
+		di.create_time
 		) as sub_k
 		on ki.kanja_id = sub_k.kanja_id
 		) as sub_zd
-		on sub_zi.kanja_id = sub_zd.kanja_id
+		on
+		sub_zi.kanja_id = sub_zd.kanja_id
 		order by
 		sub_zd.di_create_time
-		) as sub_sa
+		) as
+		sub_sa
 		where
 		sub_sa.kanja_id = #{kanjaId}
 

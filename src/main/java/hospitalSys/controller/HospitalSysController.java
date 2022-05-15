@@ -165,8 +165,6 @@ public class HospitalSysController {
 
 	}
 
-
-
 	@PostMapping("testString")
 	public String testString(Model model, @RequestParam("tete") String tete) {
 

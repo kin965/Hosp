@@ -19,14 +19,11 @@ public class IntroductionController {
 	@PostMapping("/saveIntroduction")
 	public String saveIntroduction(Model model, @ModelAttribute IntroductoryDocumentInfoBean idi) {
 
-
 		// 判断当前患者id是否存在 不存在的话 新建一个患者id 存在的话 直接向该id插入数据
 		KanjaInfoBean kanjaInfo = hospitalSysService.selectKanjaInfoByKanjaId(idi.getKanjaId());
 		if (kanjaInfo == null) {
 			System.out.println("NULL");
 			// 新建 id 存储数据
-
-
 
 			idi.setIllnessId(hospitalSysService.selectMaxIdByI() + 1);
 			idi.setDocumentId(hospitalSysService.selectMaxIdbyD() + 1);

@@ -17,20 +17,25 @@ import hospitalSys.bean.TBean;
 @Mapper
 public interface HospitalSysMapper {
 
-	//获取每个用户最新的病例信息
+	// 获取每个用户最新的病例信息
 	List<HomePageBean> selectHomePageBean();
-   //根据id查询用户信息（病例用）
+
+	// 根据id查询用户信息（病例用）
 	List<DocumentOrderBean> selectById(int kanjaId);
-    //根据id查询id信息（主页用）
+
+	// 根据id查询id信息（主页用）
 	List<HomePageBean> selectId(int kanjaId);
 
-	//保存新用户信息
+	// 保存新用户信息
 	KanjaInfoBean selectKanjaInfoByKanjaId(int kanjaId);
-    //保存新介绍文书信息
+
+	// 保存新介绍文书信息
 	void saveNewKanjaInfo(IntroductoryDocumentInfoBean introductoryDocumentInfo);
-   //更改病例状态
+
+	// 更改病例状态
 	void statusConfirmation(int documentId);
-   //删除病例
+
+	// 删除病例
 	void deleteDocument(int documentId);
 
 	// 查询当前d表id最大值，然后新id等于它加1

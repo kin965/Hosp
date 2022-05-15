@@ -26,11 +26,12 @@ public class GeneralPurposeController {
 			IntroductoryDocumentInfoBean idi = new IntroductoryDocumentInfoBean();
 			idi.setKanjaId(gpb.getKanjaId());
 
-			if(gpb.getUketoriId()!=null) {idi.setUketoriId(gpb.getUketoriId());}
-			else {idi.setUketoriId(gpb.getKanjaId());
+			if (gpb.getUketoriId() != null) {
+				idi.setUketoriId(gpb.getUketoriId());
+			} else {
+				idi.setUketoriId(gpb.getKanjaId());
 
 			}
-
 
 			idi.setName(gpb.getName());
 			idi.setKana(gpb.getKana());
@@ -48,8 +49,6 @@ public class GeneralPurposeController {
 			gpb.setIllnessId(hospitalSysService.selectMaxIdByI() + 1);
 			gpb.setDocumentId(hospitalSysService.selectMaxIdbyD() + 1);
 			gpb.setDocument("定型・汎用紹介状");
-
-
 
 			hospitalSysService.saveGeneralPurposeBean(gpb);
 

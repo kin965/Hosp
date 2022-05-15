@@ -10,8 +10,6 @@ public class OrderInfoBean {
 	// 患者ID
 	private Integer kanjaId;
 
-
-
 	// 患者氏名
 	private String name;
 	// カタカナ氏名
@@ -69,17 +67,15 @@ public class OrderInfoBean {
 	private String section;
 	private String userName;
 
-
 	private Date inquiryTime;
 	private Date prescriptionStartsTime;
 	private Date prescriptionEndTime;
 	private Date physicalExaminationStarTime;
 	private Date physicalExaminationEndTime;
 
-    private String subjective;
-    private String objective;
-    private String assessment;
-    private String plan;
-
+	private String subjective;
+	private String objective;
+	private String assessment;
+	private String plan;
 
 }
