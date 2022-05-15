@@ -1,0 +1,82 @@
+--医院信息
+create table public.hospital_info (
+  hospital_id integer not null
+  , hospital_name character varying not null
+  , short_name character varying
+  , address character varying
+  , postal_code integer
+  , telephone character varying
+  , hospital_code character varying
+  , folder_name character varying
+  , patient_code_size integer
+  , create_time timestamp(6) with time zone
+  , primary key (hospital_id)
+);
+
+-- 定型 
+create table public.illness_info (
+  illness_id integer not null
+  , kanja_id integer not null
+  , complaints character varying
+  , purpose character varying
+  , medical_history character varying
+  , family_history character varying
+  , diagnosis character varying
+  , treatment_course character varying
+  , prescription character varying
+  , view character varying
+  , habit character varying
+  , announcements character varying
+  , create_time timestamp(6) with time zone
+  , prescription_starts_time date
+  , prescription_end_time date
+  , physical_examination_star_time date
+  , physical_examination_end_time date
+  , subjective character varying
+  , objective character varying
+  , assessment character varying
+  , plan character varying
+  , inquiry_time date
+  , primary key (illness_id)
+);
+--患者信息
+create table public.kanja_info (
+  kanja_id integer not null
+  , uketori_id integer not null
+  , name character varying not null
+  , kana character varying
+  , birthday date
+  , gender character varying
+  , postal_code integer
+  , address character varying
+  , home_tel character varying
+  , work_tel character varying
+  , create_time timestamp(6) with time zone
+  , primary key (kanja_id)
+);
+--用户（医生）信息
+create table public.user_info (
+  user_id integer not null
+  , user_name character varying not null
+  , password character varying not null
+  , section character varying
+  , authority character varying
+  , create_time timestamp(6) with time zone
+  , primary key (user_id)
+);
+
+--介绍状信息
+create table public.document_info (
+  document_id integer not null
+  , kanja_id integer not null
+  , document character varying
+  , referral_hospital_info character varying
+  , former_hospital_info character varying
+  , flag integer
+  , create_time timestamp(6) with time zone
+  , user_id integer not null
+  , hospital_id integer not null
+  , primary key (document_id)
+);
+
+
